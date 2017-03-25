@@ -94,22 +94,13 @@
   		destination: destination,
   		sTime: sTime,
   		frequency: frequency 
-
   	});
   });
-
 
   database.ref().on("child_added", function(childSnapshot){
 
   	var sv = childSnapshot.val();
   	console.log(sv);
-
-
-
-
-
-    // // Time is 3:30 AM
-    // var firstTime = "03:30";
 
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(sv.sTime, "hh:mm").subtract(1, "years");
@@ -135,7 +126,6 @@
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-
 //appending all the outputs onto the schedule table
 	var toRow = $("<tr>")
 	var theData = $("<td>" + sv.name + "</td>");
@@ -154,7 +144,6 @@
   }, function(errorObject){
   	console.log("Readfailed: " + errorObject.code)
   });
-
 
 </script>
 
